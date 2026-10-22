@@ -9,6 +9,7 @@ import { StageTools } from './StageTools';
 import { StageLaunch } from './StageLaunch';
 import { PortfolioPreview } from './PortfolioPreview';
 import { CheckIcon } from '../../components/Icons';
+import { Section } from '../../components/Section';
 
 const stageTitles: Record<StageNumber, string> = {
   1: 'Define the brief',
@@ -82,14 +83,16 @@ export function IdeaToLaunchChallenge({ config, onReadReflection, onShowSlide }:
   };
 
   const level = previewLevel(state);
+  const completedStages = state.stage === 'complete' ? 3 : state.stage - 1;
   const stageNumbers: StageNumber[] = [1, 2, 3];
 
   return (
-    <section id="challenge" className="challenge" aria-labelledby="challenge-title">
-      <div className="wrap">
+    <Section ground="bordeaux" rail="No Timer" id="challenge" className="challenge" labelledBy="challenge-title">
         <div className="challenge__header">
           <div>
-            <p className="eyebrow eyebrow--light">Two-minute challenge · No timer</p>
+            <p className="eyebrow">
+              Two-minute challenge<span className="visually-hidden"> · No timer</span>
+            </p>
             <h2 id="challenge-title" className="challenge__title" tabIndex={-1}>
               Take a portfolio from idea to launch
             </h2>
@@ -97,6 +100,9 @@ export function IdeaToLaunchChallenge({ config, onReadReflection, onShowSlide }:
           <p className="challenge__intro">{config.intro}</p>
         </div>
 
+        <div className="progress" aria-hidden="true">
+          <span className="progress__fill" style={{ width: `${(completedStages / 3) * 100}%` }} />
+        </div>
         <ol className="stepper" aria-label="Challenge progress">
           {stageNumbers.map((number) => {
             const done = state.stage === 'complete' || (number < state.stage && isStageSolved(state, number));
@@ -183,7 +189,6 @@ export function IdeaToLaunchChallenge({ config, onReadReflection, onShowSlide }:
         <p className="visually-hidden" aria-live="polite" aria-atomic="true">
           {announcement}
         </p>
-      </div>
-    </section>
+    </Section>
   );
 }

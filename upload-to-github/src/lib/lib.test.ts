@@ -29,6 +29,9 @@ describe('session content', () => {
     expect(launchLab.date).toBeNull();
     expect(launchLab.speakers.map((s) => s.name)).toEqual(['Yibo Yang', 'Rishabh Modi', 'Nirvan Anand']);
     expect(launchLab.speakers[2].image).toBeNull();
+    for (const speaker of sessions.flatMap((s) => s.speakers)) {
+      if (speaker.linkedin) expect(speaker.linkedin).toMatch(/^https:\/\/www\.linkedin\.com\/in\/[\w-]+\/?$/);
+    }
   });
 });
 

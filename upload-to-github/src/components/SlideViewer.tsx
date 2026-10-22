@@ -1,6 +1,5 @@
 import { useEffect, useId } from 'react';
 import type { SlideDeck } from '../content/types';
-import { ArrowIcon } from './Icons';
 
 interface SlideViewerProps {
   deck: SlideDeck;
@@ -39,29 +38,33 @@ export function SlideViewer({ deck, index, onChange, onReturnToChallenge }: Slid
   return (
     <div className="deck" role="group" aria-roledescription="slide viewer" aria-label={deck.title} onKeyDown={onKeyDown}>
       <figure className="deck__figure">
-        <div className="deck__frame">
-          <img
-            key={slide.src}
-            src={slide.src}
-            alt={`Slide ${index + 1}: ${slide.title}`}
-            width={1600}
-            height={900}
-            decoding="async"
-            aria-describedby={`${id}-text`}
-          />
-        </div>
-        <figcaption className="deck__caption" aria-live="polite">
-          <span className="deck__count">
-            Slide {index + 1} of {total}
+        <div className="deck__plate">
+          <span className="deck__ghost" aria-hidden="true">
+            {String(index + 1).padStart(2, '0')}
           </span>
-          <span className="deck__title">{slide.title}</span>
-        </figcaption>
+          <div className="deck__caption" aria-live="polite">
+            <span className="deck__count">
+              Slide {index + 1} of {total}
+            </span>
+            <span className="deck__title">{slide.title}</span>
+          </div>
+          <div className="deck__frame">
+            <img
+              key={slide.src}
+              src={slide.src}
+              alt={`Slide ${index + 1}: ${slide.title}`}
+              width={1600}
+              height={900}
+              decoding="async"
+              aria-describedby={`${id}-text`}
+            />
+          </div>
+        </div>
       </figure>
 
       <div className="deck__controls">
-        <button type="button" className="button button--quiet" onClick={() => go(index - 1)} disabled={index === 0}>
-          <ArrowIcon direction="left" />
-          Previous
+        <button type="button" className="button button--quiet deck__prev" onClick={() => go(index - 1)} disabled={index === 0}>
+          <span aria-hidden="true">←</span> Previous
         </button>
         <label className="deck__jump">
           <span className="visually-hidden">Go to slide</span>
@@ -74,8 +77,7 @@ export function SlideViewer({ deck, index, onChange, onReturnToChallenge }: Slid
           </select>
         </label>
         <button type="button" className="button button--quiet" onClick={() => go(index + 1)} disabled={index === total - 1}>
-          Next
-          <ArrowIcon direction="right" />
+          Next <span aria-hidden="true">→</span>
         </button>
       </div>
 

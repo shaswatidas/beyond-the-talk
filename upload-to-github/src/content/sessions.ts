@@ -17,12 +17,30 @@ export const sessions: Session[] = [
     date: null,
     speakerContext: 'LaunchLab',
     speakers: [
-      { name: 'Yibo Yang', image: '/images/yibo-yang.jpg', initials: 'Y', imagePosition: '50% 40%' },
-      { name: 'Rishabh Modi', image: '/images/rishabh-modi.jpg', initials: 'R', imagePosition: '50% 35%' },
-      { name: 'Nirvan Anand', image: null, initials: 'N' },
+      {
+        name: 'Yibo Yang',
+        image: '/images/yibo-yang.jpg',
+        initials: 'Y',
+        imagePosition: '50% 40%',
+        linkedin: 'https://www.linkedin.com/in/yiboyang8/',
+      },
+      {
+        name: 'Rishabh Modi',
+        image: '/images/rishabh-modi.jpg',
+        initials: 'R',
+        imagePosition: '50% 35%',
+        linkedin: 'https://www.linkedin.com/in/rishabh-modi-2b0b06307/',
+      },
+      {
+        name: 'Nirvan Anand',
+        image: null,
+        initials: 'N',
+        linkedin: 'https://www.linkedin.com/in/nirvan-anand-597133407/',
+      },
     ],
     summary: {
       heading: 'The session in brief',
+      headingAccent: 'in brief',
       intro: 'LaunchLab walked us through one route from an idea to a live website, in three parts.',
       parts: [
         {

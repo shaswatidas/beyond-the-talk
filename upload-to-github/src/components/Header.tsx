@@ -12,15 +12,26 @@ interface HeaderProps {
 export function Header({ route, sessions }: HeaderProps) {
   return (
     <header className="site-header">
-      <div className="site-header__bar wrap">
-        <a className="wordmark" href={hrefs.home}>
-          Beyond the <span>Talk</span>
-        </a>
-        <nav className="primary-nav" aria-label="Main">
-          <a href={hrefs.sessions}>Sessions</a>
-          <a href={hrefs.about}>About this journal</a>
-        </nav>
+      <div className="masthead">
+        <div className="masthead__bar container">
+          <a className="wordmark" href={hrefs.home}>
+            Beyond the <em>Talk</em>
+          </a>
+          <nav className="primary-nav" aria-label="Main">
+            <a href={hrefs.sessions}>Sessions</a>
+            <a href={hrefs.about}>About this journal</a>
+          </nav>
+        </div>
       </div>
+      {route.name === 'home' && (
+        <div className="issue-strip">
+          <ul className="issue-strip__inner container">
+            <li>A guest-speaker learning journal</li>
+            <li>Vol. 01</li>
+            <li>Singapore · 2026</li>
+          </ul>
+        </div>
+      )}
       <SessionStrip route={route} sessions={sessions} />
     </header>
   );
@@ -59,7 +70,7 @@ function SessionStrip({ route, sessions }: HeaderProps) {
   const isHome = route.name === 'home';
   return (
     <nav className="session-strip" aria-label="Session tabs">
-      <div className="wrap session-strip__inner">
+      <div className="container session-strip__inner">
         <span className="session-strip__label" aria-hidden="true">
           Sessions
         </span>

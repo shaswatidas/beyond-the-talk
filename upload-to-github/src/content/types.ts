@@ -9,6 +9,8 @@ export interface Speaker {
   initials: string;
   /** CSS object-position for the portrait crop, for example "50% 30%". */
   imagePosition?: string;
+  /** Public LinkedIn profile URL, supplied by the site owner. Shown on the session page. */
+  linkedin?: string;
 }
 
 export interface Slide {
@@ -32,6 +34,8 @@ export interface SlideDeck {
 export interface SessionSummary {
   /** Section heading, for example "The session in brief". */
   heading: string;
+  /** Optional words of the heading set in the script face, for example "in brief". */
+  headingAccent?: string;
   intro: string;
   /** Factual outline of what the session covered, in the order it was presented. */
   parts: { title: string; text: string }[];

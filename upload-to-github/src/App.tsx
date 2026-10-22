@@ -68,7 +68,7 @@ export function App() {
 
 function NotFound() {
   return (
-    <section className="not-found wrap" aria-labelledby="page-title">
+    <section className="not-found container" aria-labelledby="page-title">
       <p className="eyebrow">Page not found</p>
       <h1 id="page-title" tabIndex={-1}>
         This session is not in the journal yet.

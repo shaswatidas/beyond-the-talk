@@ -6,6 +6,7 @@ import { SpeakerList } from '../components/Speakers';
 import { LearningPoints } from '../components/LearningPoints';
 import { ActivityRenderer } from '../activities/registry';
 import { SlideViewer } from '../components/SlideViewer';
+import { Flourish, Ghost, Section } from '../components/Section';
 
 function formatDate(iso: string): string {
   const date = new Date(`${iso}T12:00:00`);
@@ -41,80 +42,80 @@ export function SessionPage({ session }: { session: Session }) {
 
   return (
     <article className="session">
-      <header className="session-intro wrap">
+      <Section ground="bordeaux" rail={`Session ${number}`} className="opener" labelledBy="page-title">
+        <Ghost className="opener__ghost">{number}</Ghost>
         <a className="back-link" href={hrefs.sessions}>
-          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16">
-            <path d="M13 8H3M7.5 3.5 3 8l4.5 4.5" fill="none" stroke="currentColor" strokeWidth="1.6" />
-          </svg>
-          All sessions
+          <span aria-hidden="true">←</span> All sessions
         </a>
-        <p className="session-intro__number">
-          <span className="visually-hidden">Session </span>
-          {number}
-        </p>
-        <h1 id="page-title" className="session-intro__title" tabIndex={-1}>
+        <p className="visually-hidden">Session {number}</p>
+        <h1 id="page-title" className="opener__title" tabIndex={-1}>
           {session.title}
         </h1>
-        <p className="session-intro__topic">{session.topicLabel}</p>
+        <p className="opener__topic">{session.topicLabel}</p>
         {date && (
-          <p className="session-intro__date">
+          <p className="opener__date">
             <time dateTime={session.date!}>{date}</time>
           </p>
         )}
-      </header>
+      </Section>
 
-      <section className="speakers wrap" aria-labelledby="speakers-title">
-        <div className="section-label">
+      <Section ground="oat" rail="The Speakers" className="speakers" labelledBy="speakers-title">
+        <div className="section-head">
           <h2 id="speakers-title">The speakers</h2>
-          {session.speakerContext && <p className="section-label__note">From {session.speakerContext}</p>}
+          {session.speakerContext && <p className="eyebrow">From {session.speakerContext}</p>}
         </div>
         <SpeakerList speakers={session.speakers} />
-      </section>
+      </Section>
 
       {session.summary && (
-        <section className="brief wrap" aria-labelledby="brief-title">
-          <div className="section-label">
-            <h2 id="brief-title">{session.summary.heading}</h2>
-          </div>
+        <Section ground="cream" rail="The Brief" className="brief" labelledBy="brief-title">
+          <h2 id="brief-title" className="display-2">
+            <Flourish text={session.summary.heading} accent={session.summary.headingAccent} />
+          </h2>
           <p className="brief__intro">{session.summary.intro}</p>
           <ol className="brief__parts">
             {session.summary.parts.map((part, index) => (
               <li key={part.title} className="brief__part">
                 <span className="brief__number" aria-hidden="true">
-                  Part {index + 1}
+                  {index + 1}
                 </span>
                 <h3 className="brief__title">{part.title}</h3>
                 <p>{part.text}</p>
               </li>
             ))}
           </ol>
-          {session.summary.closing && <p className="brief__closing">{session.summary.closing}</p>}
-        </section>
+          {session.summary.closing && (
+            <div className="callout ground--wine">
+              <p className="eyebrow">The task</p>
+              <p className="callout__text">{session.summary.closing}</p>
+            </div>
+          )}
+        </Section>
       )}
 
-      <section className="takeaway wrap" aria-labelledby="takeaway-title">
-        <div className="section-label">
-          <h2 id="takeaway-title">What stayed with me</h2>
-          <p className="section-label__note">My interpretation</p>
-        </div>
-        <div className="takeaway__body">
-          <p className="takeaway__statement">{session.takeaway}</p>
-          <p className="takeaway__invite">
-            {session.activityInvitation}{' '}
-            <a href="#challenge" onClick={goToChallenge}>
-              Go to the challenge
-            </a>
-          </p>
-        </div>
-      </section>
+      <Section ground="wine" rail="My Interpretation" className="takeaway" labelledBy="takeaway-title">
+        <span className="glyph glyph--open" aria-hidden="true">
+          &ldquo;
+        </span>
+        <h2 id="takeaway-title" className="script-title">
+          What stayed with me
+        </h2>
+        <p className="takeaway__statement">{session.takeaway}</p>
+        <p className="takeaway__invite">
+          {session.activityInvitation}{' '}
+          <a href="#challenge" onClick={goToChallenge}>
+            Go to the challenge
+          </a>
+        </p>
+      </Section>
 
       {deck && (
-        <section className="slides wrap" aria-labelledby="slides-title">
-          <div className="section-label">
+        <Section ground="oat" className="slides" labelledBy="slides-title">
+          <div className="section-head">
             <h2 id="slides-title" tabIndex={-1}>
               {deck.title}
             </h2>
-            <p className="section-label__note">{deck.slides.length} slides</p>
+            <p className="eyebrow">{deck.slides.length} slides</p>
           </div>
           <SlideViewer
             deck={deck}
@@ -122,44 +123,57 @@ export function SessionPage({ session }: { session: Session }) {
             onChange={setSlideIndex}
             onReturnToChallenge={cameFromChallenge ? returnToChallenge : undefined}
           />
-        </section>
+        </Section>
       )}
 
       <ActivityRenderer activity={session.activity} onReadReflection={readReflection} onShowSlide={showSlide} />
 
-      <section className="ideas-section wrap" aria-labelledby="ideas-title">
-        <div className="section-label">
-          <h2 id="ideas-title">Three ideas I took away</h2>
-        </div>
+      <Section ground="cream" rail="Takeaways" className="ideas-section" labelledBy="ideas-title">
+        <h2 id="ideas-title" className="display-2">
+          <Flourish text="Three ideas I took away" accent="I took away" />
+        </h2>
         <LearningPoints points={session.learningPoints} />
-      </section>
+      </Section>
 
-      <section className="reflection wrap" aria-labelledby="reflection-title">
-        <div className="section-label">
-          <h2 id="reflection-title" tabIndex={-1}>
-            My reflection
-          </h2>
+      <Section ground="oat" rail="Reflection" className="reflection" labelledBy="reflection-title">
+        <h2 id="reflection-title" className="display-2" tabIndex={-1}>
+          My reflection
+        </h2>
+        <div className="reflection__layout">
+          <div className="reflection__body">
+            {session.reflection.map((paragraph, index) => (
+              <p key={paragraph} className={index === 0 ? 'dropcap' : undefined}>
+                {paragraph}
+              </p>
+            ))}
+          </div>
+          <svg className="eclipse" aria-hidden="true" viewBox="0 0 200 200" width="200" height="200">
+            <circle cx="100" cy="100" r="96" />
+            <circle cx="112" cy="100" r="78" />
+            <circle cx="124" cy="100" r="60" />
+            <circle cx="136" cy="100" r="42" />
+            <circle cx="148" cy="100" r="24" />
+          </svg>
         </div>
-        <div className="reflection__body">
-          {session.reflection.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
-      </section>
+      </Section>
 
-      <nav className="continue wrap" aria-label="Continue exploring">
-        <p className="continue__label">Continue exploring</p>
-        <div className="actions">
-          <a className="button button--secondary" href={hrefs.sessions}>
-            Back to all sessions
-          </a>
-          {next && (
-            <a className="button button--primary" href={hrefs.session(next.id)}>
-              Next session: {next.title}
+      <Section ground="cream" className="continue" labelledBy="continue-title">
+        <nav className="continue__inner" aria-labelledby="continue-title">
+          <p id="continue-title" className="continue__label">
+            Continue exploring
+          </p>
+          <div className="actions">
+            <a className="button button--secondary" href={hrefs.sessions}>
+              Back to all sessions
             </a>
-          )}
-        </div>
-      </nav>
+            {next && (
+              <a className="button button--primary" href={hrefs.session(next.id)}>
+                Next session: {next.title} <span aria-hidden="true">→</span>
+              </a>
+            )}
+          </div>
+        </nav>
+      </Section>
     </article>
   );
 }

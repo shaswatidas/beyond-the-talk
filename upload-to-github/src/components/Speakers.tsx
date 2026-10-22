@@ -37,6 +37,16 @@ export function SpeakerList({ speakers }: { speakers: Speaker[] }) {
         <li key={speaker.name} className="speaker">
           <Portrait speaker={speaker} size="medium" />
           <span className="speaker__name">{speaker.name}</span>
+          {speaker.linkedin && (
+            <a className="speaker__link" href={speaker.linkedin} target="_blank" rel="noopener noreferrer">
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16">
+                <rect x="0.75" y="0.75" width="14.5" height="14.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M4.5 6.5v5M4.5 4.2v.1M7.4 11.5v-5M7.4 8.6c0-1.3.8-2.2 1.9-2.2s1.7.8 1.7 2.1v3" fill="none" stroke="currentColor" strokeWidth="1.5" />
+              </svg>
+              LinkedIn
+              <span className="visually-hidden">: {speaker.name} (opens in a new tab)</span>
+            </a>
+          )}
         </li>
       ))}
     </ul>

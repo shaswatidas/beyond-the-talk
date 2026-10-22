@@ -1,13 +1,12 @@
 import type { LearningPoint } from '../content/types';
+import { Ghost } from './Section';
 
 export function LearningPoints({ points }: { points: LearningPoint[] }) {
   return (
     <ol className="ideas">
       {points.map((point, index) => (
         <li key={point.title} className="idea">
-          <span className="idea__number" aria-hidden="true">
-            {String(index + 1).padStart(2, '0')}
-          </span>
+          <Ghost className="idea__ghost">{String(index + 1).padStart(2, '0')}</Ghost>
           <div className="idea__body">
             <h3 className="idea__title">{point.title}</h3>
             <p>{point.summary}</p>
