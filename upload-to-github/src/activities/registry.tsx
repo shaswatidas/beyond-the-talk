@@ -1,5 +1,6 @@
 import type { SessionActivity } from '../content/types';
 import { IdeaToLaunchChallenge } from './idea-to-launch/IdeaToLaunchChallenge';
+import { Flashcards } from './flashcards/Flashcards';
 
 /**
  * Maps each activity type to the component that renders it.
@@ -17,6 +18,8 @@ export function ActivityRenderer({ activity, onReadReflection, onShowSlide }: Ac
   switch (activity.type) {
     case 'idea-to-launch':
       return <IdeaToLaunchChallenge config={activity.config} onReadReflection={onReadReflection} onShowSlide={onShowSlide} />;
+    case 'flashcards':
+      return <Flashcards config={activity.config} onReadReflection={onReadReflection} />;
     default:
       return null;
   }

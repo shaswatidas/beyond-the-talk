@@ -1,8 +1,13 @@
 import type { Session } from '../content/types';
 import { sessionNumber } from '../content/sessions';
 import { hrefs } from '../lib/router';
-import { SpeakerLine } from '../components/Speakers';
-import { Ghost, Section } from '../components/Section';
+import { Portrait } from '../components/Speakers';
+import { Section } from '../components/Section';
+
+function speakerNames(session: Session): string {
+  const names = session.speakers.map((speaker) => speaker.name);
+  return names.length > 1 ? `${names.slice(0, -1).join(', ')} & ${names[names.length - 1]}` : (names[0] ?? '');
+}
 
 export function HomePage({ sessions }: { sessions: Session[] }) {
   return (
@@ -37,7 +42,6 @@ export function HomePage({ sessions }: { sessions: Session[] }) {
                 decoding="async"
               />
             </div>
-            <figcaption className="arch__caption">Fig. 01 — Shaswati Das</figcaption>
           </figure>
           <div className="about__text">
             <p className="about__name">Shaswati Das</p>
@@ -56,48 +60,54 @@ export function HomePage({ sessions }: { sessions: Session[] }) {
         </div>
       </Section>
 
-      <Section ground="cream" id="sessions" className="collection" labelledBy="sessions-title">
+      <Section ground="cream" rail="The Sessions" id="sessions" className="sessions" labelledBy="sessions-title">
         <h2 id="sessions-title" className="display-2" tabIndex={-1}>
           The conversations <span className="script">so far</span>
         </h2>
-        <ol className="collection__list">
-          {sessions.map((session) => (
-            <li key={session.id} className="feature">
-              <Ghost className="feature__ghost">{sessionNumber(session)}</Ghost>
-              <div className="feature__grid">
-                <div className="rail" aria-hidden="true">
-                  <span className="rail__label">Session {sessionNumber(session)}</span>
-                </div>
-                <div className="feature__body">
-                  <p className="eyebrow">
-                    <span className="visually-hidden">Session {sessionNumber(session)}. </span>
-                    {session.collectionContext}
-                  </p>
-                  <h3 className="feature__title" id={`entry-${session.id}`}>
-                    {session.title}
-                  </h3>
-                  <SpeakerLine speakers={session.speakers} />
-                  <p className="feature__summary">{session.previewSummary}</p>
-                  <div className="actions">
-                    <a
-                      className="button button--primary"
-                      href={hrefs.session(session.id)}
-                      aria-describedby={`entry-${session.id}`}
-                    >
-                      Explore the session <span aria-hidden="true">→</span>
-                    </a>
-                    <span className="feature__activity">
-                      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16">
-                        <circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" strokeWidth="1.4" />
-                        <path d="M8 4.6V8l2.2 1.6" fill="none" stroke="currentColor" strokeWidth="1.4" />
-                      </svg>
-                      {session.activityLabel}
+        <ol className="scards">
+          {sessions.map((session) => {
+            const number = sessionNumber(session);
+            return (
+              <li key={session.id} className="scard">
+                <a className="scard__link" href={hrefs.session(session.id)} aria-describedby={`entry-${session.id}`}>
+                  <span className="scard__cover">
+                    {session.coverImage ? (
+                      <img src={session.coverImage} alt="" loading="lazy" decoding="async" />
+                    ) : (
+                      <span className="scard__cover--plain" aria-hidden="true" />
+                    )}
+                    <span className="scard__num" aria-hidden="true">
+                      {number}
                     </span>
-                  </div>
-                </div>
-              </div>
-            </li>
-          ))}
+                  </span>
+                  <span className="scard__body">
+                    <span className="eyebrow scard__eyebrow">
+                      <span className="visually-hidden">Session {number}. </span>
+                      {session.collectionContext}
+                    </span>
+                    <span className="scard__title" id={`entry-${session.id}`}>
+                      {session.title}
+                    </span>
+                    <span className="scard__speakers">
+                      <span className="speaker-line__faces" aria-hidden="true">
+                        {session.speakers.map((speaker) => (
+                          <Portrait key={speaker.name} speaker={speaker} size="small" />
+                        ))}
+                      </span>
+                      <span>
+                        <span className="visually-hidden">Speakers: </span>
+                        {speakerNames(session)}
+                      </span>
+                    </span>
+                    <span className="scard__excerpt">{session.previewSummary}</span>
+                    <span className="scard__go">
+                      Explore the session <span aria-hidden="true">→</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+            );
+          })}
         </ol>
       </Section>
     </>
