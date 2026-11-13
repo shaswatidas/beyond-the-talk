@@ -1,4 +1,5 @@
 import type { IdeaToLaunchConfig } from '../activities/idea-to-launch/config';
+import type { FlashcardsConfig } from '../activities/flashcards/config';
 
 /** A guest speaker. Set `image` to null when no photograph is available; an initial tile is shown instead. */
 export interface Speaker {
@@ -40,6 +41,8 @@ export interface SessionSummary {
   /** Factual outline of what the session covered, in the order it was presented. */
   parts: { title: string; text: string }[];
   closing?: string;
+  /** Label above the closing callout. Defaults to "The task". */
+  calloutLabel?: string;
 }
 
 export interface LearningPoint {
@@ -54,10 +57,15 @@ export interface LearningPoint {
  * Every activity type the site knows how to render.
  * Add a new member here (and a component in the activity registry) for a genuinely new game.
  */
-export type SessionActivity = {
-  type: 'idea-to-launch';
-  config: IdeaToLaunchConfig;
-};
+export type SessionActivity =
+  | {
+      type: 'idea-to-launch';
+      config: IdeaToLaunchConfig;
+    }
+  | {
+      type: 'flashcards';
+      config: FlashcardsConfig;
+    };
 
 export interface Session {
   /** Used in the address, for example #session/launchlab. Lowercase letters, numbers, and hyphens. */
@@ -71,6 +79,8 @@ export interface Session {
   collectionContext: string;
   /** Supporting topic label under the session title. */
   topicLabel: string;
+  /** Public path to the homepage card cover image (a topic photo), or null for a plain cover. */
+  coverImage?: string | null;
   /** ISO date (YYYY-MM-DD) once confirmed. Leave null if unconfirmed; it is then not shown. */
   date: string | null;
   /** Organisation or context the speakers are credited with, if supported by the source. */
@@ -82,6 +92,8 @@ export interface Session {
   takeaway: string;
   /** Short invitation that leads from the takeaway into the activity. */
   activityInvitation: string;
+  /** Link text that follows the invitation. Defaults to "Go to the challenge". */
+  activityCta?: string;
   /** Small indicator in the collection, for example "Two-minute challenge". */
   activityLabel: string;
   /** Optional factual summary of the session, shown after the speakers. */

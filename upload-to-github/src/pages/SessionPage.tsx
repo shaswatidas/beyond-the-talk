@@ -86,7 +86,7 @@ export function SessionPage({ session }: { session: Session }) {
           </ol>
           {session.summary.closing && (
             <div className="callout ground--wine">
-              <p className="eyebrow">The task</p>
+              <p className="eyebrow">{session.summary.calloutLabel ?? 'The task'}</p>
               <p className="callout__text">{session.summary.closing}</p>
             </div>
           )}
@@ -104,7 +104,7 @@ export function SessionPage({ session }: { session: Session }) {
         <p className="takeaway__invite">
           {session.activityInvitation}{' '}
           <a href="#challenge" onClick={goToChallenge}>
-            Go to the challenge
+            {session.activityCta ?? 'Go to the challenge'}
           </a>
         </p>
       </Section>
