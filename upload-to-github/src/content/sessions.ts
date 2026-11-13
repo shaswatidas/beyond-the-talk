@@ -120,7 +120,7 @@ export const sessions: Session[] = [
     navLabel: 'YP Academy',
     title: 'Building an AI marketing team',
     collectionContext: 'YP Academy · Agentic marketing with Claude',
-    topicLabel: 'A lite agentic workflow with Claude — from Yellow Pages and YP Academy',
+    topicLabel: 'A lite agentic workflow with Claude - from Yellow Pages and YP Academy',
     coverImage: '/images/cover-ai-marketing.jpg',
     date: '2026-10-30',
     speakerContext: 'YP Academy',
@@ -137,30 +137,30 @@ export const sessions: Session[] = [
       heading: 'The session in brief',
       headingAccent: 'in brief',
       intro:
-        'Nick rebuilt a real marketing team as a chain of specialised Claude agents — each a Skill with one job, one input, and one output.',
+        'Nick rebuilt a real marketing team as a chain of specialised Claude agents - each a Skill with one job, one input, and one output.',
       parts: [
         {
           title: 'The planning team.',
-          text: 'A Brief Writer drafts the brief from the Project’s context. A Brief Validator critiques it in a fresh chat — objective, audience, message, metric. A Strategist then digests the validated brief and shapes the Big Idea. The planning ends with a brief you can trust and a one-page idea.',
+          text: 'A Brief Writer drafts the brief from the Project’s context. A Brief Validator critiques it in a fresh chat - objective, audience, message, metric. A Strategist then digests the validated brief and shapes the Big Idea. The planning ends with a brief you can trust and a one-page idea.',
         },
         {
           title: 'The production team.',
-          text: 'A Designer / Art Director turns the Big Idea into key visuals, animated in Higgsfield. A Copywriter builds the messaging hierarchy — one Big Idea, then copy adapted for each platform. A Reviewer checks every piece against the brand voice before it ships.',
+          text: 'A Designer / Art Director turns the Big Idea into key visuals, animated in Higgsfield. A Copywriter builds the messaging hierarchy - one Big Idea, then copy adapted for each platform. A Reviewer checks every piece against the brand voice before it ships.',
         },
         {
           title: 'What makes it a workflow.',
-          text: 'The six roles connect in a handoff chain, with a human approving and saving to the Project — the knowledge base — so context compounds. An email trigger and a schedule start the run, SOMIN reads social signals, and a Creative Score grades the output.',
+          text: 'The six roles connect in a handoff chain, with a human approving and saving to the Project - the knowledge base - so context compounds. An email trigger and a schedule start the run, SOMIN reads social signals, and a Creative Score grades the output.',
         },
       ],
       calloutLabel: 'The idea that stuck',
       closing:
-        'Context in Claude is the knowledge base — keep feeding the Project, and the workflow holds together.',
+        'Context in Claude is the knowledge base - keep feeding the Project, and the workflow holds together.',
     },
     previewSummary:
-      'A real marketing team, rebuilt as a chain of specialised Claude agents — each a Skill with one job, one input, and one output, handing its work to the next.',
-    takeaway: 'It starts with one big idea — then writes the copy for every platform.',
+      'A real marketing team, rebuilt as a chain of specialised Claude agents - each a Skill with one job, one input, and one output, handing its work to the next.',
+    takeaway: 'It starts with one big idea - then writes the copy for every platform.',
     activityInvitation:
-      'That single move — strategy first, then a hierarchy of messages fanning out by channel — is what made the whole “team” click for me.',
+      'That single move - strategy first, then a hierarchy of messages fanning out by channel - is what made the whole “team” click for me.',
     activityCta: 'Review the six roles',
     activityLabel: 'Flip-card deck',
     slides: nickGohSlides,
@@ -168,10 +168,10 @@ export const sessions: Session[] = [
       {
         title: 'Skills turn prompts into a team.',
         summary:
-          'In Claude, Skills make each role repeatable, and you keep feeding the Project — the knowledge base — so the workflow holds together instead of starting over each chat.',
+          'In Claude, Skills make each role repeatable, and you keep feeding the Project - the knowledge base - so the workflow holds together instead of starting over each chat.',
         detail: [
           'Each role is a Skill with one job, one input, and one output. Chaining them means the output of one becomes the input of the next, rather than re-explaining everything in a single long conversation.',
-          'The Project carries the shared context — the brand, the audience, the past decisions — so the team behaves consistently across runs.',
+          'The Project carries the shared context - the brand, the audience, the past decisions - so the team behaves consistently across runs.',
         ],
       },
       {
@@ -179,14 +179,14 @@ export const sessions: Session[] = [
         summary:
           'The messaging hierarchy works like a copywriter, but only after research and strategy set the context. It begins with one Big Idea, then writes the version each platform needs.',
         detail: [
-          'The planning team — Brief Writer, Validator, Strategist — exists to make sure the Big Idea is sound before any words or visuals are produced.',
+          'The planning team - Brief Writer, Validator, Strategist - exists to make sure the Big Idea is sound before any words or visuals are produced.',
           'Only then does the Copywriter adapt that one idea into channel-by-channel messaging, so every platform says the same thing in its own voice.',
         ],
       },
       {
         title: 'The workflow reaches past the chat.',
         summary:
-          'Key visuals animated in Higgsfield, social signals from SOMIN, a Creative Score to grade the work, and stitching tools like Copilot Studio, n8n or relevance.ai — connect them and a conversation starts to behave like an agent.',
+          'Key visuals animated in Higgsfield, social signals from SOMIN, a Creative Score to grade the work, and stitching tools like Copilot Studio, n8n or relevance.ai - connect them and a conversation starts to behave like an agent.',
         detail: [
           'An email trigger and a schedule can start a run on their own; SOMIN reads social signals; a Creative Score grades the output against a rubric.',
           'Orchestration tools tie the steps together, so the system runs more like an agent than a single chat window.',
@@ -194,7 +194,7 @@ export const sessions: Session[] = [
       },
     ],
     reflection: [
-      'Coming in, I thought of AI as one clever assistant I had to prompt well. What stayed with me was seeing it as a team instead — a chain of small, specialised roles, each with one job and a clean handoff, with me approving and the Project holding the memory.',
+      'Coming in, I thought of AI as one clever assistant I had to prompt well. What stayed with me was seeing it as a team instead - a chain of small, specialised roles, each with one job and a clean handoff, with me approving and the Project holding the memory.',
       'The parts I want to try next are the ones in my notes: adding my own Skills, keeping a Claude Project as a knowledge base, and connecting tools like Higgsfield and a creative-score step so the whole thing runs more like an agent than a single chat.',
     ],
     sourceNotes: [

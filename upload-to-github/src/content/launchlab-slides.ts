@@ -44,7 +44,7 @@ export const launchLabSlides: SlideDeck = {
     {
       "src": "/slides/launchlab/slide-07.jpg",
       "title": "Export your design",
-      "text": "Export Your Design\n- When your design is done, open the Share menu in the top right\n- Find \"Handoff to Claude Code…\" in the export options — this is the bridge that connects the two tools\n- It sends your finished design straight into Claude Code, which turns it into a real, working site\n- Locate this button before you start building — you'll need it, and it's easy to miss in the menu"
+      "text": "Export Your Design\n- When your design is done, open the Share menu in the top right\n- Find \"Handoff to Claude Code…\" in the export options - this is the bridge that connects the two tools\n- It sends your finished design straight into Claude Code, which turns it into a real, working site\n- Locate this button before you start building - you'll need it, and it's easy to miss in the menu"
     },
     {
       "src": "/slides/launchlab/slide-08.jpg",

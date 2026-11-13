@@ -6,7 +6,7 @@ export const nickGohFlashcards: FlashcardsConfig = {
   eyebrow: 'Review the team',
   heading: 'Six roles, six cards',
   headingAccent: 'six cards',
-  intro: 'Tap a card to flip it — the front names the role; the back is what it does and what it hands on.',
+  intro: 'Tap a card to flip it - the front names the role; the back is what it does and what it hands on.',
   cards: [
     {
       team: 'Planning',
@@ -17,7 +17,7 @@ export const nickGohFlashcards: FlashcardsConfig = {
     {
       team: 'Planning',
       term: 'Brief Validator',
-      definition: 'Critiques the brief in a fresh chat — objective, audience, message, metric.',
+      definition: 'Critiques the brief in a fresh chat - objective, audience, message, metric.',
       output: 'a verdict and the top fixes',
     },
     {
@@ -35,7 +35,7 @@ export const nickGohFlashcards: FlashcardsConfig = {
     {
       team: 'Production',
       term: 'Copywriter',
-      definition: 'Builds the messaging hierarchy — one Big Idea, adapted for each platform.',
+      definition: 'Builds the messaging hierarchy - one Big Idea, adapted for each platform.',
       output: 'channel-by-channel copy',
     },
     {

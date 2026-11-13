@@ -55,7 +55,7 @@ export function Flashcards({ config, onReadReflection }: FlashcardsProps) {
             <span className="flashcard__face flashcard__face--back">
               <span className="eyebrow flashcard__label">What it does</span>
               <span className="flashcard__def">{card.definition}</span>
-              <span className="eyebrow flashcard__out">Hands on — {card.output}</span>
+              <span className="eyebrow flashcard__out">Hands on - {card.output}</span>
             </span>
           </span>
         </button>
